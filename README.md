@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Project with Multiple Development Configurations
 
-## Getting Started
+This Next.js project demonstrates how to run the application with different configurations based on the developer or environment.
 
-First, run the development server:
+## Available Scripts
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+In the project directory, you can run:
+
+### `npm run dev`
+
+Runs the app in the default development mode.
+
+### `npm run ssk-dev`
+
+Runs the app in SSK development mode, using configuration from the `config/ssk` directory.
+
+### `npm run narayana-dev`
+
+Runs the app in Narayana development mode, using configuration from the `config/narayana` directory.
+
+### `npm run build`
+
+Builds the app for production using the default configuration.
+
+### `npm run ssk-build`
+
+Builds the app for production using the SSK configuration.
+
+### `npm run narayana-build`
+
+Builds the app for production using the Narayana configuration.
+
+## How It Works
+
+The project uses environment variables to determine which configuration to load:
+
+1. When you run `npm run ssk-dev`, it sets `CONFIG_MODE=ssk` and runs Next.js
+2. The `next.config.ts` file detects this environment variable and loads the configuration from `config/ssk/config.ts`
+3. The configuration values are then available throughout your application via `process.env`
+
+## Using Configuration Values in Your Code
+
+You can access the configuration values in your code using the utility functions in `src/utils/config.ts`:
+
+```typescript
+import { getConfig, getDeveloperMode, getApiBaseUrl } from "../utils/config";
+
+// Get the current developer mode
+const mode = getDeveloperMode(); // "ssk", "narayana", or "default"
+
+// Get the API base URL for the current environment
+const apiUrl = getApiBaseUrl();
+
+// Get all configuration values as an object
+const config = getConfig();
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customizing Configurations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To add or modify configuration values:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Edit the configuration files in `config/ssk/config.ts` or `config/narayana/config.ts`
+2. Add your new values to the configuration object
+3. Update the utility functions in `src/utils/config.ts` to access these new values
 
-## Learn More
+## Adding More Configurations
 
-To learn more about Next.js, take a look at the following resources:
+To add a new configuration (e.g., for a new developer):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Create a new directory in the `config` folder (e.g., `config/new-dev`)
+2. Create a `config.ts` file in that directory with your configuration values
+3. Update `next.config.ts` to handle the new configuration mode
+4. Add a new script to `package.json` (e.g., `"new-dev-dev": "CONFIG_MODE=new-dev next dev"`)
