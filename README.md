@@ -1,4 +1,4 @@
-# Portfolio Project with Multiple Development Configurations
+# Portfolio Project with Multiple Development Configurations for different developers
 
 This Next.js project demonstrates how to run the application with different configurations based on the developer or environment.
 
