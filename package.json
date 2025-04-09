@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "ssk-dev": "CONFIG_MODE=ssk next dev",
+    "narayana-dev": "CONFIG_MODE=narayana next dev",
     "build": "next build",
+    "ssk-build": "CONFIG_MODE=ssk next build",
+    "narayana-build": "CONFIG_MODE=narayana next build",
     "start": "next start",
     "lint": "next lint"
   },
