@@ -4,7 +4,7 @@ import "../styles/globals.css";
 import "../styles/main.css";
 import "../styles/environment-info.css";
 import { ThemeProvider } from "../context/ThemeContext";
-
+import Navbar from "../components/Navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,6 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
+		  <Navbar />
           {children}
         </ThemeProvider>
       </body>
