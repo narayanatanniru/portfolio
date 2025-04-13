@@ -1,10 +1,11 @@
 import Hero from '../components/Hero';
 import ThemeToggle from '../components/ThemeToggle';
 import EnvironmentDisplay from '../components/EnvironmentDisplay';
-
+import Navbar from '../components/Navbar';
 export default function Home() {
   return (
     <main>
+      <Navbar />
       <div className="theme-toggle-container">
         <ThemeToggle />
       </div>

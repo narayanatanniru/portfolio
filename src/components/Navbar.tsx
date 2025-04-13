@@ -1,9 +1,11 @@
-import React from 'react'
+'use client';
 
-function Navbar() {
-  return (
-	<div>Navbar</div>
-  )
-}
+import { useOrchestrator } from '@/context/OrchestratorContext';
 
+const Navbar: React.FC = () => {
+  const { orchestrator } = useOrchestrator();
+  const Component = orchestrator.getComponent();
+  return <Component />;
+};
+  
 export default Navbar;
