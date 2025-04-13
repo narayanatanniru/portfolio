@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import "../styles/main.css";
 import "../styles/environment-info.css";
 import { ThemeProvider } from "../context/ThemeContext";
+import { OrchestratorProvider } from "../context/OrchestratorContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +32,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
-          {children}
+          <OrchestratorProvider>
+            {children}
+          </OrchestratorProvider>
         </ThemeProvider>
       </body>
     </html>
