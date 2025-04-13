@@ -1,7 +1,11 @@
-import NavbarVariant1 from "@/navbars/NavbarVariant1";
+'use client';
+
+import { useOrchestrator } from '@/context/OrchestratorContext';
 
 const Navbar: React.FC = () => {
-  return <NavbarVariant1/>
-}
-
+  const { orchestrator } = useOrchestrator();
+  const Component = orchestrator.getComponent();
+  return <Component />;
+};
+  
 export default Navbar;
