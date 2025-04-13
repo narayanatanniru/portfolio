@@ -1,9 +1,7 @@
-import React from 'react'
+import NavbarVariant1 from "@/navbars/NavbarVariant1";
 
-function Navbar() {
-  return (
-	<div>Navbar</div>
-  )
+const Navbar: React.FC = () => {
+  return <NavbarVariant1/>
 }
 
 export default Navbar;
